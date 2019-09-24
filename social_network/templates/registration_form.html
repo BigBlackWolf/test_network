@@ -1,0 +1,12 @@
+{% extends "./header.html" %}
+
+{% block content %}
+
+<h3>Registration</h3>
+<form class="form-horizontal" id="register-form" method="post" action=".">
+  {{ user_form.as_p }}
+  {% csrf_token %}
+  <p><input type="submit" value="Create"></p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "./header.html" %}
+
+{% block content %}
+
+<div class="d-flex flex-column row-hl">
+	<div>
+		<label class="row justify-content-md-center text-primary h3">Add Post</label>
+		<input class="add_post_title" type="text" placeholder="Title"/>
+		<textarea name="" id="add_post" cols="30" rows="10"></textarea>
+		<button id="target" class="btn btn-secondary add_post">Submit</button>
+	</div>
+
+	<div class="p-3 d-none">
+		<h2 class="new"></h2>
+		<h5 class="blog-post-meta ml-auto">Recently</h5>
+		<p class="new"></p>
+		<div class="row justify-content-end">
+			<div class="col-2">
+				<span class="count">
+					<span class="total-"></span>
+				</span>
+				<button id="new" data-action="like" class="like btn btn-outline-primary">
+				Like
+				</button>
+			</div>
+		</div>
+	</div>
+
+	{% for post in object_list %}
+	<div class="p-3">
+		<h2>{{post.title}}</h2>
+		<h5 class="blog-post-meta ml-auto">{{post.date|date:"m.d.Y"}}</h5>
+		<p>{{post.body}}</p>
+		<div class="row justify-content-end">
+			<div class="col-2">
+				{% with total_likes=post.likes.count  users_like=post.likes.all %}
+				<span class="count">
+					<span class="total-{{ post.id }}">{{ total_likes }}</span>
+				</span>
+				<button data-id="{{ post.id }}" data-action="{% if request.user in users_like %}un{% endif %}like" class="like btn btn-outline-primary">
+				{% if request.user not in users_like %}
+				Like
+				{% else %}
+				Unlike
+				{% endif %}
+				</button>
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+
+</div>
+
+{% endblock %}
+

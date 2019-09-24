@@ -1,0 +1,38 @@
+body, html {
+  height:100%;
+}
+
+body {
+  background-color:#f6f6f6;
+}
+
+.d-flex div {
+  background-color:#fff;
+  margin-bottom: 10px;
+}
+
+.d-flex div p {
+  margin-top: 30px;
+}
+
+form .input-group, input {
+  height: 50px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+#register-form .input-group i{
+  width: 20px;
+}
+
+#register-form .input-group input{
+  font-size: 30px;
+  height: 50px;
+  width: 100%;
+}
+
+#add_post {
+  height: 100px;
+  width: 100%;
+}
+
